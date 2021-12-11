@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    background-color: silver;
+}
+#container{
+    width: 30em;
+    height: 90%;
+    padding: 2%;
+}
+#score-board{
+    height: 20%;
+    display: grid;
+    place-items: center;
+    font-family: 'Indie Flower', cursive;
+   
+}
+#score-board>h1{
+    font-family: 'Sigmar One', cursive;
+}
+#score-board>div{
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+}
+#score-board>div>span{
+    font-size: 25px;
+    font-weight: bolder;
+}
+#hands{
+    height: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    width: 100%;
+}
+#computer-hand{
+    transform: scaleX(-1);
+}
+.hand{
+    height: 9em;
+}
+.computer-motion{
+    animation: computer 2s ease-in 1;
+}
+.player-motion{
+    animation: player 2s ease-in 1;
+}
+#buttons{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#buttons>button:nth-child(2){
+    align-self: flex-end;
+}
+.button{
+    background-color: darkgrey;
+    opacity: 0.9;
+    border-radius: 50%;
+    height: 6em;
+    width: 9em;
+}
+.button:hover{
+    background-color: dimgray;
+    opacity: 1;
+}
+.button>img{
+    height: 3em;
+}
+@keyframes player{
+    0%,30%,70%,100%{
+        transform: translateY(0px);
+    }10%,50%,90%{
+        transform: translateY(-50px) rotateZ(-50deg);
+    }
+}
+@keyframes computer{
+    0%,30%,70%,100%{
+        transform: translateY(0px) scaleX(-1);
+    }10%,50%,90%{
+        transform: translateY(-50px) rotateZ(50deg) scaleX(-1);
+    }
+}
+@media screen and (orientation: landscape) and (max-width: 999px){
+    #container{
+        width: 90%;
+        height: 80%;
+    }
+    #score-board{
+        height: 20%;
+        padding-right: 20%;
+    }
+    #hands{
+        width: 75%;
+        height: 80%;
+        float: left;
+    }
+    #buttons{
+        width: 25%;
+        height: 80%;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    #buttons>button:nth-child(2){
+        align-self: center;
+    }
+}
+@media screen and (min-width: 1000px){
+    #container{
+        width: 60em;
+        display: grid;
+        grid-template-columns: 1fr 4fr 1fr;
+    }
+    #buttons{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    #hands{
+        height: 100%;
+    }
+    #score-board{
+        height: 100%;
+    }
+    #score-board>div{
+        display: grid;
+    }
+    #buttons>button:nth-child(2){
+        align-self: center;
+    }
+    .hand{
+        height: 12em;
+    }
+}

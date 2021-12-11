@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="prs.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="score-board">
+            <h1>Score:</h1>
+            <div>
+                <span><b>Player: </b><b id="player-score">0</b></span>
+                <span><b>Computer: </b><b id="computer-score">0</b></span>
+            </div>
+        </div>
+        <div id="hands">
+            <span>
+                <img class="hand" id="player-hand" src="Images/rock.svg" alt="">
+            </span>
+            <span>
+                <img class="hand" id="computer-hand" src="Images/rock.svg" alt="">
+            </span>
+        </div>
+        <div id="buttons">
+            <button class="button" value='rock'><img src="Images/hand-rock.svg" alt=""></button>
+            <button class="button" value='paper'><img src="Images/hand-paper.svg" alt=""></button>
+            <button class="button" value='scissor'><img src="Images/hand-scissors.svg" alt=""></button>
+        </div>
+    </div>
+</body>
+<script src="prs.js"></script>
+</html>
