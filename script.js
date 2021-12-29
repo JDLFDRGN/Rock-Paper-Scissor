@@ -3,7 +3,8 @@ let leftHand=document.querySelector("#player-hand");
 let rightHand=document.querySelector("#computer-hand");
 let playerScoreDisplay=document.querySelector("#player-score");
 let computerScoreDisplay=document.querySelector("#computer-score");
-let playerPick, computerPick, hasBeatenComputer=false, playerHand, computerHand, inMotion=false, playerScore=0, computerScore=0;
+var hour=0;
+let playerPick, computerPick, hasBeatenComputer=false, playerHand, computerHand, inMotion=false, playerScore=0, computerScore=0, isUnbeatable=false;
 let rock="Images/rock.svg";
 let paper="Images/paper.svg";
 let scissor="Images/scissor.svg"
@@ -13,12 +14,14 @@ function theGame(){
     leftHand.src=rock;
     rightHand.src=rock;
     playerPick=this.value;
-    computerPick=Math.floor(Math.random()*3+1);
     computerRandomPick();
+    unbeatableMode();
+    unbeatableState();
     motion();
     compare();
 }
 function computerRandomPick(){
+    computerPick=Math.floor(Math.random()*3+1);
     if(computerPick===1)computerPick='rock';
     else if(computerPick===2)computerPick='paper';
     else computerPick='scissor';
@@ -61,4 +64,22 @@ function reset(){
     hasBeatenComputer=false;
     leftHand.classList.remove("player-motion");
     rightHand.classList.remove("computer-motion");
+}
+function unbeatableMode(){
+    time();
+    if(hour!=20)return;
+    if(playerPick==='rock' && computerPick==='scissor')isUnbeatable=true;
+    else if(playerPick==='paper' && computerPick==='rock')isUnbeatable=true;
+    else if(playerPick==='scissor' && computerPick==='paper')isUnbeatable=true;
+    else isUnbeatable=false;
+}
+function unbeatableState(){
+    while(isUnbeatable===true){
+        computerRandomPick();
+        unbeatableMode();
+    }
+}
+function time(){
+    var time=new Date();
+    hour=time.getHours();
 }
